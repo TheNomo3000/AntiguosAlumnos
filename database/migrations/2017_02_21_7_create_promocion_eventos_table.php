@@ -15,9 +15,11 @@ class CreatePromocionEventosTable extends Migration
     {
         Schema::create('promocion_eventos', function (Blueprint $table) {
             $table->integer('cod_evento')->unsigned();
-            $table->integer('cod_estudios')->unsigned();
-            $table->smallinteger('anio');
-            $table->primary(['cod_evento','cod_estudios','anio']);
+            $table->integer('cod_promocion')->unsigned();
+            $table->primary(['cod_evento','cod_promocion']);
+            $table->foreign('cod_promocion')
+                ->references('cod_promocion')
+                ->on('promociones');
             $table->timestamps();
         });
     }

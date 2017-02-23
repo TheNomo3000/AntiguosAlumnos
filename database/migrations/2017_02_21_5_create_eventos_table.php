@@ -19,9 +19,9 @@ class CreateEventosTable extends Migration
             $table->integer('cod_promocion')->unsigned();
             $table->timestamps();
             $table->binary('publicado');
-            /*$table->foreign('cod_promocion')
+            $table->foreign('cod_promocion')
                   ->references('cod_promocion')
-                  ->on('promociones');*/
+                  ->on('promociones');
         });
     }
 

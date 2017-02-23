@@ -17,6 +17,7 @@ class CreatePromocionesTable extends Migration
             $table->increments('cod_promocion');
             $table->integer('cod_estudios')->unsigned();
             $table->smallinteger('anio');
+            $table->unique(['cod_estudios','anio']);
             $table->foreign('cod_estudios')
                   ->references('cod_estudios')
                   ->on('estudios');
