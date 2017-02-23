@@ -14,7 +14,7 @@ class CreateSociosPromocionTable extends Migration
     public function up()
     {
         Schema::create('socios_promocion', function (Blueprint $table) {
-            /*$table->mediuminteger('cod_socio')->unsigned();*/
+            $table->mediuminteger('cod_socio')->unsigned();
             $table->integer('cod_promocion')->unsigned();
             $table->primary(['cod_socio','cod_promocion']);
             $table->foreign('cod_promocion')
