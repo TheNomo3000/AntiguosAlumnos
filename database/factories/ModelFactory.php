@@ -1,32 +1,20 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
-
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
 
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->name,
         'cp' => $faker->randomNumber($nbDigits = 5),
         'poblacion' => $faker->city,
-        'telefono' => $faker->randomNumber($nbDigits = 9),
-        'movil' => $faker->randomNumber($nbDigits = 9),
-        'fax' => $faker->randomNumber($nbDigits = 9),
+        'telefono' => $faker->regexify('9[0-9]{8}'),
+        'movil' => $faker->regexify('6[0-9]{8}'),
+        'fax' => $faker->regexify('9[0-9]{8}'),
         'direccion' => $faker->streetAddress,
         'fecha_nacimiento' => $faker->date($format = 'Y-m-d'),
         'lugar_nacimiento' => $faker->city,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
 });

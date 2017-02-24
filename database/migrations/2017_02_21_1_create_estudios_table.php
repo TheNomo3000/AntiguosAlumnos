@@ -17,7 +17,7 @@ class CreateEstudiosTable extends Migration
             $table->increments('cod_estudios');
             $table->string('nombre');
             $table->string('abreviatura',5);
-            $table->timestamps();
+            $table->unique(['nombre','abreviatura']);
         });
     }
 
